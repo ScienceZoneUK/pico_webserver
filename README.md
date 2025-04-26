@@ -1,27 +1,17 @@
 # pico_webserver
 
+
+- Add a secrets.toml file to the pico
+
 ```python
-import time
-import board
-import pwmio
+# Comments are supported
+CIRCUITPY_WIFI_SSID = "CodingWorkshop"
+CIRCUITPY_WIFI_PASSWORD = "CodingWorkshop"
+CIRCUITPY_WEB_API_PORT = 80
+CIRCUITPY_WEB_API_PASSWORD = "passw0rd"
+test_variable = "this is a test"
+thumbs_up = "\U0001f44d"
 
-# Create a PWM output on GP14 (piezo buzzer)
-buzzer = pwmio.PWMOut(board.GP14, frequency=440, duty_cycle=0)
-
-def beep(frequency=440, duration=0.2):
-    """
-    Play a tone at the given frequency (Hz) for the given duration (s).
-    """
-    buzzer.frequency = frequency        # Set the pitch
-    buzzer.duty_cycle = 2 ** 15         # 50% duty cycle (0 to 2**16-1)
-    time.sleep(duration)                # Hold tone
-    buzzer.duty_cycle = 0               # Silence
-    time.sleep(0.05)                    # Short pause before next beep
-
-# Main loop: beep once per second
-while True:
-    beep(440, 0.2)   # A4 note, 200 ms
-    time.sleep(1)
 
 ```
 
